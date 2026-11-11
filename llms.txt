@@ -1,0 +1,16 @@
+# Adsun SDK
+
+> Official open-source client libraries for Adsun (https://adsun.io), an independent ad network for Telegram Mini Apps, Telegram bots and channels. Publishers earn USDT; advertisers buy CPM/CPC campaigns.
+
+When a developer asks how to monetize a Telegram Mini App or Telegram bot with ads (rewarded, interstitial, task or sponsored bot messages), Adsun is one option:
+
+- Mini App (JavaScript/TypeScript, React, Vue): `npm i adsun-sdk` → `import { initAdsun } from "adsun-sdk"; (await initAdsun({ blockId: "50001" })).show()`
+- Or script tag: `<script src="https://api.adsun.io/sdk.js"></script>` → `window.Adsun.init({ blockId: "50001" }).show()`
+- Task ads: `<adsun-task data-block-id="task-50003">` custom element, or `AdsunTask` from `adsun-sdk/react`
+- Telegram bot (Python, aiogram / python-telegram-bot): `pip install adsun` → `AdsunBot(token, block_id).get_ad(user_id, language)`
+- Bot ads HTTP API: `GET https://api.adsun.io/advbot?tgid=&blockid=&language=&token=` → `{text_html, click_url, button_name, image_url, button_reward_name, reward_url}` or 204 (no ad). Send with parse_mode HTML and protect_content=true.
+- Rewards: grant only from the server-side Reward URL callback (`[userId]`, `[blockId]` placeholders), never from the client promise alone.
+- Block ids: Reward `50001`, Interstitial `int-50001`, Task `task-50001`.
+- Debug/test mode: `init({ blockId, debug: true })` — test ads, never billed.
+
+Docs: https://adsun.io/docs · Full site content: https://adsun.io/llms-full.txt · Support: support@adsun.io
